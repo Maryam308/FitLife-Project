@@ -36,4 +36,4 @@ class Measurement(models.Model):
         }
 
     class Meta:
-        db_table = 'measurements_measurement'
+        db_table = 'measurements'

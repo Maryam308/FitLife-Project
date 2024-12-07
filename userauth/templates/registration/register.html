@@ -1,24 +1,22 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<div
-  class="container d-flex justify-content-center align-items-center min-vh-100"
->
-  <div class="row justify-content-center w-100">
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
     <div class="col-md-6 col-lg-5">
-      <div class="card shadow-lg p-4" style="margin-top: -100px">
-        <div class="card-body">
-          <h1
-            class="mb-4 display-4 heading"
-            style="font-family: 'Arial', sans-serif"
-          >
+      <div class="card p-4">
+        <div class="card-body text-center">
+          <h1 class="mb-5 display-4 heading">
             <i class="bi bi-person-plus-fill"></i> Register
           </h1>
           <form method="post">
-            {% csrf_token %} {% for field in form %}
+            {% csrf_token %}
+            {% for field in form %}
             <div class="mb-3">
-              <label for="{{ field.id_for_label }}" class="form-label"
-                >{{ field.label }}</label
-              >
-              {{ field }} {% if field.errors %}
+              <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+              {{ field }}
+              {% if field.errors %}
               <div class="invalid-feedback d-block">
                 {% for error in field.errors %}
                 <p>{{ error }}</p>
@@ -28,21 +26,13 @@
             </div>
             {% endfor %}
 
-            <div class="d-flex justify-content-center">
-              <button class="btn btn-primary btn-block mt-4" type="submit">
-                Register
-              </button>
-            </div>
+            <button class="btn btn-primary btn-block mt-4" type="submit">Register</button>
           </form>
 
           <hr class="my-4" />
           <p class="mb-0">
             Already have an account?
-            <a
-              href="{% url 'userauth:login' %}"
-              class="text-primary font-weight-bold"
-              >Log In</a
-            >
+            <a href="{% url 'userauth:login' %}" class="text-primary font-weight-bold">Log In</a>
           </p>
         </div>
       </div>
